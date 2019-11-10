@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>WiKi - My Docs</title>
+        <title>STM32 - My Docs</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -55,11 +55,11 @@
                             <li >
                                 <a href="../GitHub/">GitHub</a>
                             </li>
-                            <li >
-                                <a href="../STM32/">STM32</a>
-                            </li>
                             <li class="active">
-                                <a href="./">WiKi</a>
+                                <a href="./">STM32</a>
+                            </li>
+                            <li >
+                                <a href="../WiKi/">WiKi</a>
                             </li>
                         </ul>
 
@@ -70,12 +70,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../STM32/">
+                                <a rel="next" href="../GitHub/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../WiKi/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -87,57 +87,11 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#wiki">WiKi搭建</a></li>
-            <li><a href="#1-mkdocs">1. 安装MKDocs</a></li>
-            <li><a href="#2-wiki">2. 创建一个WiKi</a></li>
-            <li><a href="#3-wiki">3. 预览WiKi</a></li>
-            <li><a href="#4-wikigithub">4. 将你的WiKi站点托管到Github</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="wiki">WiKi搭建</h1>
-<h2 id="1-mkdocs">1. 安装MKDocs</h2>
-<h3 id="11-ubuntu">1.1 Ubuntu系统</h3>
-<p><code>sudo apt-get install mkdocs</code></p>
-<h3 id="12-windows">1.2 Windows系统</h3>
-<p><code>sudo apt-get install mkdocs</code></p>
-<h4 id="python">安装python</h4>
-<h4 id="pip">安装pip</h4>
-<p><code>pip install --upgrade pip</code><br />
-如果出错，尝试以下命令<br />
-<code>pip install lxml</code>  </p>
-<h4 id="mkdocs">安装MKDocs</h4>
-<p><code>pip install mkdocs</code>  </p>
-<h3 id="13">1.3 确认是否安装正确</h3>
-<p><code>mkdocs --version</code>  </p>
-<h2 id="2-wiki">2. 创建一个WiKi</h2>
-<pre><code>mkdocs new myWiKi
-cd myWiKi
-</code></pre>
-
-<p>docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件<br />
-mkdocs.yml是wiki网站的配置文件（主题、目录、语言等）  </p>
-<h2 id="3-wiki">3. 预览WiKi</h2>
-<p>启动mkdocs服务器<br />
-<code>mkdocs serve</code><br />
-在浏览器中输入127.0.0.1:8000访问wiki  </p>
-<h2 id="4-wikigithub">4. 将你的WiKi站点托管到Github</h2>
-<p>在Github上创建一个新仓库(仓库名要与你的wiki文件夹名一致)<br />
-初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库  </p>
-<pre><code>cd myWiKi
-git init
-git git remote add origin git@github.com:Lighter-z/myWiKi.git
-git add .
-git commit -m &quot;myWiKi&quot;
-git push origin master
-</code></pre>
-
-<p>将站点部署到Github上<br />
-<code>mkdocs gh-deploy</code><br />
-现在你的wiki站点（HTML文件）在gh-pages分支，你的wiki站点（markdown文件）在master分支。<br />
-可以通过以下网址访问你的WiKi<br />
-https://user_name.github.io/repository_name  </p></div>
+</div>
         </div>
 
         <footer class="col-md-12">
