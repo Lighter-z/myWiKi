@@ -1,0 +1,144 @@
+####1.安装完成后第一件事情  
+* `git config --global user.name "Your Name"`   
+* `git config --global user.email "email@example.com"`  
+####2.创建版本库  
+#####2.1把整个文件变为git仓库  
+* `git init`  
+#####2.2把文件添加到仓库  
+* `git add "文件名"`     
+#####2.3把文件提交到仓库  
+* `git commit -m "本次提交说明"`     
+####4远程仓库  
+######4.2.1从远程仓库克隆  
+* `git clone "仓库链接"`   
+####5.分支管理  
+#####5.1创建与合并分支  
+######5.1.1创建并切换到dev分支  
+* `git checkout -b dev`    
+> 注：git checkout 命令加上 -b参数 表示创建并切换，相当于以下两条命令：  
+> * `git branch dev`  
+> * `git checkout dev`  
+######5.1.2查看当前分支  
+* `git branch`  
+> 注：git branch命令会列出所有分支，当前分支前面会标一个*号     
+######5.1.3切换回master分支  
+* `git checkout master`  
+######5.1.4把dev分支合并到master分支  
+* `git merge dev`  
+> 注：此时在master中查看，与5.1.1中描述的不同，文件的修改已经同步     
+######5.1.5删除dev分支  
+* `git branch -d dev`  
+> 注：删除后，查看branch，就只剩下master分支     
+#####5.2解决冲突  
+######5.2.1分支与master都被修改并提交后，在分支与master合并时会出现冲突  
+1.`git status` 命令会告知冲突文件    
+2. 可直接打开文件，git会用 <<<<<<<，=======，>>>>>>>标记出不同分支的内容手动修改之后，再次进行提交   
+3.`git log --graph --pretty=oneline --abbrev-commit`可看到分支合并情况  
+#####5.3分支管理策略  
+######5.3.1禁用快速合并模式  
+* `git merge --no-ff -m "提交说明" dev`  
+（1）--no-ff参数，表示禁用Fast forward   
+（2）Fast forward 模式下，删除分支后，会丢掉分支信息   
+（3）禁用Fast forward 模式，git会在merge时生成一个新的commit，在历史分支上就可看到分支信息   
+#####5.4Bug分支  
+######5.4.1保存现场
+* `git stash`   
+可把当前工作现场“储存”起来，然后切到其他分支进行Bug修复  
+* `git stash list`    
+查看之前“储存”的工作现场在什么地方   
+######5.4.2恢复现场
+* `git stash apply`  
+恢复后，stash内容并不删除,需要用git stash drop来删除     
+* `git stash pop`  
+恢复的同时把stash内容也删了     
+######5.4.3恢复指定文件   
+###### 方法一：
++ `git stash apply stash@{0}`      
+> 注：若在dev上工作，修改Bug时，切换到master上修复。        
+>     想在dev上同步master上修复过的Bug：   
++ `git cherry-pick <commit>`   
+>例：    
+>   git cherry-pick 4c805e2    
+>   4c805e2：是在使用git commit -m ""时产生的信息    
+###### 方法二：
+可直接在dev上进行Bug修复，然后提交在主分支。  
+以上两种都需要在修改Bug之前使用 git stash 进行现场“储存”  
+#####5.5feature分支
+若feature分支还未合并便要删除，此时要强行删除分支     
+* `git branch -D <name>`   
+#####5.6多人协作  
+######5.6.1查看远程库信息
+* `git remote origin`   
+* `git remote -v`  
+######5.6.2推送分支  
+* `git push origin <分支名>`  
+例：  
+* `git push origin master`  
+* `git push origin dev`    
+***************************************************                
+__git__ __push__ __origin__ __master报错__     
+
+第一种解决方法(不要轻易使用)
+加上 -f，强制推送上去，这时你的GitHub上的库会以本地同步                
+* `git push -f`            
+第二种解决方法（推荐）
+使用git pull --rebase origin master合并 GitHub 和 本地 的库，本地会多出之前不同步的文件，在使用 git push -u origin master 推送到 GitHub 库中。       
+* `git pull --rebase origin master`         
+* `git push origin master`         
+***************************************************                                               
+1. master分支是主分支，因此要时刻与远程同步；  
+2. dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；  
+3. bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；  
+4. feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。   
+######5.6.3抓取分支
+1. 如果推送失败：（别人也对分支进行了修改）     
+先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送    
+2. 如果git pull也失败：     
+原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接     
+git branch --set-upstream-to <branch-name> origin/<branch-name>     
+####总结
+总结：
+1. 首先，可以试图用git push origin <branch-name>推送自己的修改；        
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；        
+3. 如果合并有冲突，则解决冲突，并在本地提交；        
+4. 没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！        
+   如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，        
+   用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。        
+####6.标签管理  
+#####6.1创建标签
+######6.1.1在对应分支创建标签   
+* `git tag <name>`     
+######6.1.2根据commit创建标签   
+* `git tag v0.9 f52c633`   
+> 注：
+>可以创建带有说明的标签，用-a指定标签名，-m指定说明文字              
+>git tag -a v0.1 -m "version 0.1 released" 1094adb         
+>1094adb：可写可不写          
+######6.1.3查看标签信息  
+* `git show <tagname>`  
+#####6.2操作标签  
+######6.2.1删除标签
+（1）删除本地标签          
+* `git tag -d <tagname>`   
+（2）删除远程标签       
+先从本地删除    
+* `git tag -d <tagname>`  
+删除远程   
+* `git push origin :refs/tags/<tagname>`  
+######6.2.2将标签推送到远程  
+* `git push origin <tagname>`    
+一次全部推完   
+* `git push origin --tags`  
+
+
+####常用命令
+git status : 查看当前仓库中文件的状态。    
+git status -s : 文件状态的简写（M - 修改， A - 添加， D - 删除， R - 重命名，?? - 未追踪）。    
+git add <文件名> ：将后方紧跟的文件进行暂存，以便commit使用。    
+git reset HEAD <文件名> : 将已经暂存的文件进行撤销，回到未暂存的状态。    
+git checkout -- <文件名> ：撤销对尚未暂存文件的修改，该操作不可逆，慎用。    
+git commit -a : 对那些被修改的文件单尚未暂存和提交的文件进行暂存和提交。注意：对未暂存的新增文件无效。    
+git commit : 对暂存区的文件进行提交到本地仓库。    
+git push : 将本地仓库已经提交的内容发布到远端。    
+git log : 查看提交历史，记录    
+
