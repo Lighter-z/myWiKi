@@ -1,5 +1,5 @@
 site_name: My Docs  
-pages:
+nav:
     - Home: index.md
     - WiKi: WiKi.md
     - 嵌入式:  嵌入式/00-嵌入式.md
