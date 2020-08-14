@@ -17,7 +17,7 @@
 ```
 mkdocs new myWiKi
 cd myWiKi
-```  
+```
 docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件  
 mkdocs.yml是wiki网站的配置文件（主题、目录、语言等）  
 ##3. 预览WiKi  
@@ -34,12 +34,16 @@ git git remote add origin git@github.com:Lighter-z/myWiKi.git
 git add .
 git commit -m "myWiKi"
 git push origin master
-```  
+```
 将站点部署到Github上  
 `mkdocs gh-deploy`  
 现在你的wiki站点（HTML文件）在gh-pages分支，你的wiki站点（markdown文件）在master分支。  
 可以通过以下网址访问你的WiKi  
 https://user_name.github.io/repository_name  
+
+
+
+<https://markdown-docs-zh.readthedocs.io/zh_CN/latest/user-guide/styling-your-docs/>
 
 
 
