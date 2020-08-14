@@ -2,9 +2,9 @@ site_name: My Docs
 pages:
     - Home: index.md
     - WiKi: WiKi.md
-    - GitHub: GitHub.md
-    - STM32: STM32.md
-    - ESP8266: ESP8266.md
+    - 嵌入式:  嵌入式/00-嵌入式.md
+    - 软件使用:  软件使用/000-软件使用.md
+
 
 theme: 'readthedocs'
 
