@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>001 git - My Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "001 git";
+    var mkdocs_page_input_path = "\u8f6f\u4ef6\u4f7f\u7528\\001-git.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../WiKi/">WiKi</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../嵌入式/00-嵌入式/">嵌入式</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../000-软件使用/">软件使用</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>001 git</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <div class="toc">
+<ul>
+<li><a href="#1">1.安装完成后第一件事情</a></li>
+<li><a href="#2">2.创建版本库</a><ul>
+<li><a href="#21git">2.1把整个文件变为git仓库</a></li>
+<li><a href="#22">2.2把文件添加到仓库</a></li>
+<li><a href="#23">2.3把文件提交到仓库</a></li>
+</ul>
+</li>
+<li><a href="#4">4远程仓库</a><ul>
+<li><a href="#421">4.2.1从远程仓库克隆</a></li>
+</ul>
+</li>
+<li><a href="#5">5.分支管理</a><ul>
+<li><a href="#51">5.1创建与合并分支</a><ul>
+<li><a href="#511dev">5.1.1创建并切换到dev分支</a></li>
+<li><a href="#512">5.1.2查看当前分支</a></li>
+<li><a href="#513master">5.1.3切换回master分支</a></li>
+<li><a href="#514devmaster">5.1.4把dev分支合并到master分支</a></li>
+<li><a href="#515dev">5.1.5删除dev分支</a></li>
+</ul>
+</li>
+<li><a href="#52">5.2解决冲突</a><ul>
+<li><a href="#521mastermaster">5.2.1分支与master都被修改并提交后，在分支与master合并时会出现冲突</a></li>
+</ul>
+</li>
+<li><a href="#53">5.3分支管理策略</a><ul>
+<li><a href="#531">5.3.1禁用快速合并模式</a></li>
+</ul>
+</li>
+<li><a href="#54bug">5.4Bug分支</a><ul>
+<li><a href="#541">5.4.1保存现场</a></li>
+<li><a href="#542">5.4.2恢复现场</a></li>
+<li><a href="#543">5.4.3恢复指定文件</a></li>
+<li><a href="#_1">方法一：</a></li>
+<li><a href="#_2">方法二：</a></li>
+</ul>
+</li>
+<li><a href="#55feature">5.5feature分支</a></li>
+<li><a href="#56">5.6多人协作</a><ul>
+<li><a href="#561">5.6.1查看远程库信息</a></li>
+<li><a href="#562">5.6.2推送分支</a></li>
+<li><a href="#563">5.6.3抓取分支</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_3">总结</a></li>
+<li><a href="#6">6.标签管理</a><ul>
+<li><a href="#61">6.1创建标签</a><ul>
+<li><a href="#611">6.1.1在对应分支创建标签</a></li>
+<li><a href="#612commit">6.1.2根据commit创建标签</a></li>
+<li><a href="#613">6.1.3查看标签信息</a></li>
+</ul>
+</li>
+<li><a href="#62">6.2操作标签</a><ul>
+<li><a href="#621">6.2.1删除标签</a></li>
+<li><a href="#622">6.2.2将标签推送到远程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_4">常用命令</a></li>
+</ul>
+</div>
+<h4 id="1">1.安装完成后第一件事情</h4>
+<ul>
+<li><code>git config --global user.name "Your Name"</code>   </li>
+<li><code>git config --global user.email "email@example.com"</code>  </li>
+</ul>
+<h4 id="2">2.创建版本库</h4>
+<h5 id="21git">2.1把整个文件变为git仓库</h5>
+<ul>
+<li><code>git init</code>  </li>
+</ul>
+<h5 id="22">2.2把文件添加到仓库</h5>
+<ul>
+<li><code>git add "文件名"</code>     </li>
+</ul>
+<h5 id="23">2.3把文件提交到仓库</h5>
+<ul>
+<li><code>git commit -m "本次提交说明"</code>     </li>
+</ul>
+<h4 id="4">4远程仓库</h4>
+<h6 id="421">4.2.1从远程仓库克隆</h6>
+<ul>
+<li><code>git clone "仓库链接"</code>   </li>
+</ul>
+<h4 id="5">5.分支管理</h4>
+<h5 id="51">5.1创建与合并分支</h5>
+<h6 id="511dev">5.1.1创建并切换到dev分支</h6>
+<ul>
+<li><code>git checkout -b dev</code>    <blockquote>
+<p>注：git checkout 命令加上 -b参数 表示创建并切换，相当于以下两条命令：<br />
+<em> <code>git branch dev</code><br />
+</em> <code>git checkout dev</code>  </p>
+</blockquote>
+</li>
+</ul>
+<h6 id="512">5.1.2查看当前分支</h6>
+<ul>
+<li><code>git branch</code>  <blockquote>
+<p>注：git branch命令会列出所有分支，当前分支前面会标一个*号     </p>
+</blockquote>
+</li>
+</ul>
+<h6 id="513master">5.1.3切换回master分支</h6>
+<ul>
+<li><code>git checkout master</code>  </li>
+</ul>
+<h6 id="514devmaster">5.1.4把dev分支合并到master分支</h6>
+<ul>
+<li><code>git merge dev</code>  <blockquote>
+<p>注：此时在master中查看，与5.1.1中描述的不同，文件的修改已经同步     </p>
+</blockquote>
+</li>
+</ul>
+<h6 id="515dev">5.1.5删除dev分支</h6>
+<ul>
+<li><code>git branch -d dev</code>  <blockquote>
+<p>注：删除后，查看branch，就只剩下master分支     </p>
+</blockquote>
+</li>
+</ul>
+<h5 id="52">5.2解决冲突</h5>
+<h6 id="521mastermaster">5.2.1分支与master都被修改并提交后，在分支与master合并时会出现冲突</h6>
+<p>1.<code>git status</code> 命令会告知冲突文件  <br />
+2. 可直接打开文件，git会用 &lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容手动修改之后，再次进行提交 <br />
+  3.<code>git log --graph --pretty=oneline --abbrev-commit</code>可看到分支合并情况  </p>
+<h5 id="53">5.3分支管理策略</h5>
+<h6 id="531">5.3.1禁用快速合并模式</h6>
+<ul>
+<li><code>git merge --no-ff -m "提交说明" dev</code><br />
+  （1）--no-ff参数，表示禁用Fast forward <br />
+  （2）Fast forward 模式下，删除分支后，会丢掉分支信息 <br />
+  （3）禁用Fast forward 模式，git会在merge时生成一个新的commit，在历史分支上就可看到分支信息   </li>
+</ul>
+<h5 id="54bug">5.4Bug分支</h5>
+<h6 id="541">5.4.1保存现场</h6>
+<ul>
+<li><code>git stash</code> <br />
+  可把当前工作现场“储存”起来，然后切到其他分支进行Bug修复  </li>
+<li><code>git stash list</code>  <br />
+  查看之前“储存”的工作现场在什么地方   </li>
+</ul>
+<h6 id="542">5.4.2恢复现场</h6>
+<ul>
+<li><code>git stash apply</code><br />
+  恢复后，stash内容并不删除,需要用git stash drop来删除     </li>
+<li><code>git stash pop</code><br />
+  恢复的同时把stash内容也删了     </li>
+</ul>
+<h6 id="543">5.4.3恢复指定文件</h6>
+<h6 id="_1">方法一：</h6>
+<ul>
+<li><code>git stash apply stash@{0}</code>      <blockquote>
+<p>注：若在dev上工作，修改Bug时，切换到master上修复。      <br />
+    想在dev上同步master上修复过的Bug：   </p>
+</blockquote>
+</li>
+<li><code>git cherry-pick &lt;commit&gt;</code>   <blockquote>
+<p>例：  <br />
+  git cherry-pick 4c805e2  <br />
+  4c805e2：是在使用git commit -m ""时产生的信息    </p>
+</blockquote>
+</li>
+</ul>
+<h6 id="_2">方法二：</h6>
+<p>可直接在dev上进行Bug修复，然后提交在主分支。<br />
+以上两种都需要在修改Bug之前使用 git stash 进行现场“储存”  </p>
+<h5 id="55feature">5.5feature分支</h5>
+<p>若feature分支还未合并便要删除，此时要强行删除分支   <br />
+* <code>git branch -D &lt;name&gt;</code>   </p>
+<h5 id="56">5.6多人协作</h5>
+<h6 id="561">5.6.1查看远程库信息</h6>
+<ul>
+<li><code>git remote origin</code>   </li>
+<li><code>git remote -v</code>  </li>
+</ul>
+<h6 id="562">5.6.2推送分支</h6>
+<ul>
+<li><code>git push origin &lt;分支名&gt;</code><br />
+  例：  </li>
+<li><code>git push origin master</code>  </li>
+<li><code>git push origin dev</code>    </li>
+</ul>
+<hr />
+<p><strong>git</strong> <strong>push</strong> <strong>origin</strong> <strong>master报错</strong>     </p>
+<p>第一种解决方法(不要轻易使用)
+加上 -f，强制推送上去，这时你的GitHub上的库会以本地同步              <br />
+<em> <code>git push -f</code>          <br />
+  第二种解决方法（推荐）
+  使用git pull --rebase origin master合并 GitHub 和 本地 的库，本地会多出之前不同步的文件，在使用 git push -u origin master 推送到 GitHub 库中。     <br />
+</em> <code>git pull --rebase origin master</code>       <br />
+* <code>git push origin master</code>         </p>
+<hr />
+<ol>
+<li>master分支是主分支，因此要时刻与远程同步；  </li>
+<li>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；  </li>
+<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；  </li>
+<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。   </li>
+</ol>
+<h6 id="563">5.6.3抓取分支</h6>
+<ol>
+<li>如果推送失败：（别人也对分支进行了修改）   <br />
+  先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送    </li>
+<li>如果git pull也失败：   <br />
+  原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接   <br />
+  git branch --set-upstream-to <branch-name> origin/<branch-name>     </li>
+</ol>
+<h4 id="_3">总结</h4>
+<p>总结：
+1. 首先，可以试图用git push origin <branch-name>推送自己的修改；      <br />
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；      <br />
+3. 如果合并有冲突，则解决冲突，并在本地提交；      <br />
+4. 没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！      <br />
+   如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，      <br />
+   用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。        </p>
+<h4 id="6">6.标签管理</h4>
+<h5 id="61">6.1创建标签</h5>
+<h6 id="611">6.1.1在对应分支创建标签</h6>
+<ul>
+<li><code>git tag &lt;name&gt;</code>     </li>
+</ul>
+<h6 id="612commit">6.1.2根据commit创建标签</h6>
+<ul>
+<li><code>git tag v0.9 f52c633</code>   <blockquote>
+<p>注：
+可以创建带有说明的标签，用-a指定标签名，-m指定说明文字            <br />
+git tag -a v0.1 -m "version 0.1 released" 1094adb       <br />
+1094adb：可写可不写          </p>
+</blockquote>
+</li>
+</ul>
+<h6 id="613">6.1.3查看标签信息</h6>
+<ul>
+<li><code>git show &lt;tagname&gt;</code>  </li>
+</ul>
+<h5 id="62">6.2操作标签</h5>
+<h6 id="621">6.2.1删除标签</h6>
+<p>（1）删除本地标签        <br />
+<em> <code>git tag -d &lt;tagname&gt;</code> <br />
+  （2）删除远程标签     <br />
+  先从本地删除  <br />
+</em> <code>git tag -d &lt;tagname&gt;</code><br />
+  删除远程 <br />
+* <code>git push origin :refs/tags/&lt;tagname&gt;</code>  </p>
+<h6 id="622">6.2.2将标签推送到远程</h6>
+<ul>
+<li><code>git push origin &lt;tagname&gt;</code>  <br />
+  一次全部推完   </li>
+<li><code>git push origin --tags</code>  </li>
+</ul>
+<h4 id="_4">常用命令</h4>
+<p>git status : 查看当前仓库中文件的状态。  <br />
+git status -s : 文件状态的简写（M - 修改， A - 添加， D - 删除， R - 重命名，?? - 未追踪）。  <br />
+git add &lt;文件名&gt; ：将后方紧跟的文件进行暂存，以便commit使用。  <br />
+git reset HEAD &lt;文件名&gt; : 将已经暂存的文件进行撤销，回到未暂存的状态。  <br />
+git checkout -- &lt;文件名&gt; ：撤销对尚未暂存文件的修改，该操作不可逆，慎用。  <br />
+git commit -a : 对那些被修改的文件单尚未暂存和提交的文件进行暂存和提交。注意：对未暂存的新增文件无效。  <br />
+git commit : 对暂存区的文件进行提交到本地仓库。  <br />
+git push : 将本地仓库已经提交的内容发布到远端。  <br />
+git log : 查看提交历史，记录    </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
