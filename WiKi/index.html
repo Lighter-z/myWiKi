@@ -110,43 +110,49 @@
 <ul>
 <li><a href="https://markdown-docs-zh.readthedocs.io/zh_CN/latest/">中文教程</a></li>
 <li>系统</li>
-<li>Ubuntu系统
-     <code>sudo apt-get install mkdocs</code></li>
-<li>Windows系统
-     <code>sudo apt-get install mkdocs</code></li>
-<li>环境
-  2.1 安装python
-  2.2 安装pip
-    <code>pip install --upgrade pip</code><ul>
-<li>如果出错使用下面命令
-  <code>pip install lxml</code></li>
+<li>
+<p>Ubuntu系统<br />
+<code>sudo apt-get install mkdocs</code></p>
+</li>
+<li>
+<p>Windows系统  </p>
+<p><code>sudo apt-get install mkdocs</code></p>
+</li>
+<li>
+<p>环境<br />
+  2.1 安装python<br />
+  2.2 安装pip<br />
+<code>pip install --upgrade pip</code></p>
+<ul>
+<li>如果出错使用下面命令<br />
+<code>pip install lxml</code></li>
 </ul>
 </li>
-<li>安装MKDocs
-      <code>pip install mkdocs</code></li>
+<li>安装MKDocs<br />
+<code>pip install mkdocs</code></li>
 <li>
-<p>确认是否安装正确
-      <code>mkdocs --version</code></p>
+<p>确认是否安装正确<br />
+<code>mkdocs --version</code></p>
 </li>
 <li>
-<p>创建一个WiKi
-    <code>mkdocs new myWiKi
+<p>创建一个WiKi<br />
+<code>mkdocs new myWiKi
     cd myWiKi</code></p>
 <ul>
-<li>docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件</li>
-<li>mkdocs.yml是wiki网站的配置文件（主题、目录、语言等）  </li>
+<li>docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件  </li>
+<li>mkdocs.yml是wiki网站的配置文件（主题、目录、语言等  ）  </li>
 </ul>
 </li>
 <li>
-<p>预览WiKi(启动mkdocs服务器)
-    <code>mkdocs serve</code></p>
+<p>预览WiKi(启动mkdocs服务器)<br />
+<code>mkdocs serve</code></p>
 <ul>
-<li>本地访问：在浏览器中输入127.0.0.1:8000访问wiki  </li>
+<li>本地访问：在浏览器中输入127.0.0.1:8000访问wiki    </li>
 </ul>
 </li>
-<li>将WiKi站点托管到Github  </li>
+<li>将WiKi站点托管到Github    </li>
 <li>在Github上创建一个新仓库(仓库名要与你的wiki文件夹名一致)  </li>
-<li>初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库<br />
+<li>初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库  <br />
 <code>cd myWiKi
   git init
   git git remote add origin git@github.com:Lighter-z/myWiKi.git
