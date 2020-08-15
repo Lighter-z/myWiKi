@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="author" content="Dmitry S">
+    <meta name="author" content="MingZhao">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -95,8 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
         构造类型--&gt;结构体&amp;#160struct
         构造类型--&gt;共用体&amp;#160union
     数据类型--&gt;指针类型
-    数据类型--&gt;空类型&amp;#160void
-</code></pre>
+    数据类型--&gt;空类型&amp;#160void</code></pre>
 
 <h2 id="11">1.1 字节<a class="headerlink" href="#11" title="Permanent link">#</a></h2>
 <table>
@@ -170,32 +169,32 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>一个指针可以是volatile 吗？解释为什么？</li>
 <li>是的。尽管这并不很常见。一个例子是当一个中服务子程序修该一个指向一个buffer的指针时。</li>
 <li>下面的函数有什么错误：
-<div class="highlight"><pre><span></span><code>int square(volatile int *ptr)
-{
-  return ptr *ptr;
-}
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">square</span><span class="p">(</span><span class="k">volatile</span> <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">ptr</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>这段代码的目的是用来返指针*ptr指向值的平方，但是，由于*ptr指向一个volatile型参数，编译器将产生类似下面的代码：
-<div class="highlight"><pre><span></span><code>int square(volatile int *ptr)
-{
-  int a,b;
-  a = *ptr;
-  b = *ptr;
-  return a * b;
-}
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">square</span><span class="p">(</span><span class="k">volatile</span> <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>由于*ptr的值可能被意想不到地该变，因此a和b可能是不同的。结果，这段代码可能返不是你所期望的平方值！正确的代码如下：
-<div class="highlight"><pre><span></span><code>int square(volatile int *ptr)
-{
-  int a;
-  a = *ptr;
-  return a * a;
-}
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">square</span><span class="p">(</span><span class="k">volatile</span> <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 </ol>
 <h2 id="22-register">2.2 register<a class="headerlink" href="#22-register" title="Permanent link">#</a></h2>
 <ul>
-<li>为了提高效率，C语言允许将局部变量得值放在 CPU中的寄存器中，这种变量叫“寄存器变量”，用关键字register作声明。</li>
+<li>为了提高效率，C语言允许将局部变量得值放在 CPU中的寄存器中，这种变量叫<code>寄存器变量</code>，用关键字register作声明。</li>
 </ul>
 <blockquote>
 <ol>

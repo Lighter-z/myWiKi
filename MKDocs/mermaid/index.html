@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="author" content="Dmitry S">
+    <meta name="author" content="MingZhao">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -32,9 +32,11 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "\u7518\u7279\u56fe", url: "#_top", children: [
+          {title: "\u6d41\u7a0b\u56fe", url: "#_top", children: [
           ]},
-          {title: "\u7a7a\u683c\u6548\u679c", url: "#_2", children: [
+          {title: "\u7518\u7279\u56fe", url: "#_2", children: [
+          ]},
+          {title: "\u7a7a\u683c\u6548\u679c", url: "#_3", children: [
           ]},
         ];
 
@@ -88,7 +90,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="_1">甘特图<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+    <h1 id="_1">流程图<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<pre class="uml-mermaid"><code>graph LR
+A[长方形]--链接--&gt;B((圆))
+A--&gt;C(圆角长方形)
+A--&gt;D{菱形}
+C--&gt;D</code></pre>
+
+<h1 id="_2">甘特图<a class="headerlink" href="#_2" title="Permanent link">#</a></h1>
 <pre class="uml-mermaid"><code>gantt
 dateFormat  YYYY-MM-DD
 title Adding GANTT diagram functionality to mermaid
@@ -117,7 +126,7 @@ Describe gantt syntax               :after doc1, 3d
 Add gantt diagram to demo page      :20h
 Add another diagram to demo page    :48h</code></pre>
 
-<h1 id="_2">空格效果<a class="headerlink" href="#_2" title="Permanent link">#</a></h1>
+<h1 id="_3">空格效果<a class="headerlink" href="#_3" title="Permanent link">#</a></h1>
 <pre class="uml-mermaid"><code>graph LR;
 A&amp;#160B
 1&amp;nbsp2
