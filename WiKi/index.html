@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitry S">
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>WiKi - MingZhao</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "WiKi\u642d\u5efa", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../嵌入式/01-单片机/000-STM32/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../嵌入式/01-单片机/000-STM32/" class="btn btn-xs btn-link">
+        STM32
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../sample-b/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../sample-b/" class="btn btn-xs btn-link">
+        Sample Page B
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="wiki">WiKi搭建<a class="headerlink" href="#wiki" title="Permanent link">#</a></h1>
+<ul>
+<li><a href="https://markdown-docs-zh.readthedocs.io/zh_CN/latest/">中文教程</a></li>
+<li>系统</li>
+<li>
+<p>Ubuntu系统<br />
+<code>sudo apt-get install mkdocs</code></p>
+</li>
+<li>
+<p>Windows系统  </p>
+<p><code>sudo apt-get install mkdocs</code></p>
+</li>
+<li>
+<p>环境<br />
+  2.1 安装python<br />
+  2.2 安装pip<br />
+<code>pip install --upgrade pip</code></p>
+<ul>
+<li>如果出错使用下面命令<br />
+<code>pip install lxml</code></li>
+</ul>
+</li>
+<li>安装MKDocs<br />
+<code>pip install mkdocs</code></li>
+<li>
+<p>确认是否安装正确<br />
+<code>mkdocs --version</code></p>
+</li>
+<li>
+<p>创建一个WiKi<br />
+<code>mkdocs new myWiKi
+    cd myWiKi</code></p>
+<ul>
+<li>docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件  </li>
+<li>mkdocs.yml是wiki网站的配置文件（主题、目录、语言等  ）  </li>
+</ul>
+</li>
+<li>
+<p>预览WiKi(启动mkdocs服务器)<br />
+<code>mkdocs serve</code></p>
+<ul>
+<li>本地访问：在浏览器中输入127.0.0.1:8000访问wiki    </li>
+</ul>
+</li>
+<li>将WiKi站点托管到Github    </li>
+<li>在Github上创建一个新仓库(仓库名要与你的wiki文件夹名一致)  </li>
+<li>初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库  <br />
+<code>cd myWiKi
+  git init
+  git git remote add origin git@github.com:Lighter-z/myWiKi.git
+  git add .
+  git commit -m "myWiKi"
+  git push origin master</code></li>
+<li>将站点部署到Github上<br />
+<code>mkdocs gh-deploy</code></li>
+<li>现在你的wiki站点（HTML文件）在gh-pages分支，你的wiki站点（markdown文件）在master分支。  </li>
+<li>
+<p>通过以下网址访问你的WiKi<br />
+<code>https://user_name.github.io/repository_name
+  https://lighter-z.github.io/myWiKi/</code></p>
+</li>
+<li>
+<p>其他命令</p>
+</li>
+<li>
+<p><code>mkdocs new '工程名'</code> 创建新的MkDocs工程</p>
+</li>
+<li>
+<p><code>mkdocs serve</code> 运行内建的开发服务器</p>
+</li>
+<li>
+<p><code>mkdocs build</code> 构建MkDocs文档</p>
+</li>
+<li>
+<p><code>mkdocs gh-deploy</code> 将文档部署到GitHub页面上</p>
+</li>
+<li>
+<p><code>mkdocs json</code> 将MkDocs文档构建成JSON文件</p>
+</li>
+<li>
+<p>若有文件被从源码中移除了, 但是相关的文档仍残留在 <code>site</code> 目录中. 在构建命令中添加 <code>--clean</code> 参数即可移除这些文档.</p>
+<p><code>mkdocs build --clean</code></p>
+</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../嵌入式/01-单片机/000-STM32/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../嵌入式/01-单片机/000-STM32/" class="btn btn-xs btn-link">
+        STM32
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../sample-b/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../sample-b/" class="btn btn-xs btn-link">
+        Sample Page B
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://github.com/Lighter-z/myWiKi/edit/master/docs/WiKi.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
