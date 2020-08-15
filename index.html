@@ -42,7 +42,13 @@
         ];
 
     </script>
-    <script src="./js/base.js"></script> 
+    <script src="./js/base.js"></script>
+      <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      <script src="js/umlconvert.js"></script> 
 </head>
 
 <body>
@@ -136,7 +142,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev2 "><a href="WiKi/" class="wm-article-link wm-toc-text">WiKi</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="MKDocs/WiKi/" class="wm-article-link wm-toc-text">WiKi</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="MKDocs/mermaid/" class="wm-article-link wm-toc-text">mermaid</a>
 </li>
   </ul>
 </li>
@@ -149,9 +157,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 "><a href="嵌入式/01-单片机/000-STM32/" class="wm-article-link wm-toc-text">STM32</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="%E5%B5%8C%E5%85%A5%E5%BC%8F/01-%E5%8D%95%E7%89%87%E6%9C%BA/000-STM32/" class="wm-article-link wm-toc-text">STM32</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="嵌入式/01-单片机/001-ESP8266/" class="wm-article-link wm-toc-text">ESP8266</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="%E5%B5%8C%E5%85%A5%E5%BC%8F/01-%E5%8D%95%E7%89%87%E6%9C%BA/001-ESP8266/" class="wm-article-link wm-toc-text">ESP8266</a>
 </li>
   </ul>
 </li>
@@ -160,7 +168,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 "><a href="嵌入式/02-RTOS/000-RT-Thread/" class="wm-article-link wm-toc-text">RT-Thread</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="%E5%B5%8C%E5%85%A5%E5%BC%8F/02-RTOS/000-RT-Thread/" class="wm-article-link wm-toc-text">RT-Thread</a>
 </li>
   </ul>
 </li>
@@ -172,9 +180,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev2 "><a href="软件使用/000-git/" class="wm-article-link wm-toc-text">Git</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/000-git/" class="wm-article-link wm-toc-text">Git</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="软件使用/001-Pr/" class="wm-article-link wm-toc-text">Pr</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/001-Pr/" class="wm-article-link wm-toc-text">Pr</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">编程</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="%E7%BC%96%E7%A8%8B/c%E8%AF%AD%E8%A8%80/" class="wm-article-link wm-toc-text">C语言</a>
 </li>
   </ul>
 </li>
@@ -223,30 +240,29 @@ search results.</p>
 <p>Within pages, it uses the default mkdocs theme, including syntax highlighting.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <p>Install the Windmill theme using <code>pip</code>:</p>
-<pre><code class="sh">pip install mkdocs-windmill
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install mkdocs-windmill
+</code></pre></div>
 
 <p>To install and get started with <code>mkdocs</code>, follow <a href="http://www.mkdocs.org/#installation">MkDocs documentation</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
 <p>To use the Windmill theme installed via <code>pip</code>, add this to your <code>mkdocs.yml</code>:</p>
-<pre><code class="yaml">theme: 'windmill'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span> <span class="s">&#39;windmill&#39;</span>
+</code></pre></div>
 
 <p>If you cloned Windmill from GitHub:</p>
-<pre><code class="yaml">theme:
-  name: null
-  custom_dir: '{INSTALL_DIR}/mkdocs_windmill'
-  # Copy settings from mkdocs_theme.yml, which is ignored by custom_dir themes.
-  static_templates: [404.html]
-  search_index_only: true
-  include_search_page: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+  <span class="nt">custom_dir</span><span class="p">:</span> <span class="s">&#39;{INSTALL_DIR}/mkdocs_windmill&#39;</span>
+  <span class="c1"># Copy settings from mkdocs_theme.yml, which is ignored by custom_dir themes.</span>
+  <span class="nt">static_templates</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">404.html</span><span class="p p-Indicator">]</span>
+  <span class="nt">search_index_only</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">include_search_page</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 
-<p>Note that it's important for there to exist a homepage, e.g. a top-level root element in mkdocs 1.0+:</p>
-<pre><code class="yaml">nav:
-  - Home: index.md
-</code></pre>
-
+<p>Note that it&rsquo;s important for there to exist a homepage, e.g. a top-level root element in mkdocs 1.0+:
+<div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">Home</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">index.md</span>
+</code></pre></div></p>
 <p>See <a href="customization/">Customization</a> for a few extra configuration options
 supported by the Windmill theme.</p>
 
@@ -286,6 +302,6 @@ Edit on GitHub</a>
 </body>
 </html>
 <!--
-MkDocs version : 1.0.4
-Build Date UTC : 2020-08-15 03:15:24
+MkDocs version : 1.1.2
+Build Date UTC : 2020-08-15 06:39:14.992748+00:00
 -->
