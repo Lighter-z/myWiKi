@@ -4,8 +4,8 @@ site_author: 'Dmitry S'
 
 repo_url: https://github.com/Lighter-z/myWiKi
 
-theme:
-  name: null
+theme: 
+  name: material
   custom_dir: mkdocs_windmill
   # Copy settings from mkdocs_theme.yml, which is ignored by custom_dir themes.
   static_templates: [404.html]
@@ -23,7 +23,8 @@ nav:
     - Sample Subpage A2: sample/sample-a2.md
   - Sample Page B: sample-b.md
 - MKDocs: 
-  - WiKi: WiKi.md
+  - WiKi: MKDocs/WiKi.md
+  - mermaid: MKDocs/mermaid.md
 - 嵌入式:
   - 单片机: 
     - STM32: 嵌入式/01-单片机/000-STM32.md
@@ -33,10 +34,44 @@ nav:
 - 软件使用:
   - Git: 软件使用/000-git.md
   - Pr: 软件使用/001-Pr.md
+- 编程:
+  - C语言: 编程/c语言.md
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js
+  - js/umlconvert.js
 markdown_extensions:
   - toc:
       permalink: '#'
+  - smarty
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences: [
+            {name: flow, class: uml-flowchart}
+           ,{name: sequence, class: uml-sequence-diagram}
+           ,{name: mermaid, class: uml-mermaid}
+      ]
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  
 
 extra:
   history_buttons: false
   version: v1.0.4
+    
+
