@@ -28,3 +28,10 @@ Describe gantt syntax               :after doc1, 3d
 Add gantt diagram to demo page      :20h
 Add another diagram to demo page    :48h
 ```
+# 空格效果
+```mermaid
+graph LR;
+A&#160B
+1&nbsp2
+A&nbsp;DD
+```
