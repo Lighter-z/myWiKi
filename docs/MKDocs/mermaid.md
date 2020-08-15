@@ -1,4 +1,14 @@
+# 流程图
+```mermaid
+graph LR
+A[长方形]--链接-->B((圆))
+A-->C(圆角长方形)
+A-->D{菱形}
+C-->D
+```
+
 # 甘特图
+
 ```mermaid
 gantt
 dateFormat  YYYY-MM-DD

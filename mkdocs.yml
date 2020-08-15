@@ -1,9 +1,10 @@
 site_name: 'MingZhao'
 site_description: 'MkDocs theme focused on navigation and usability.'
-site_author: 'Dmitry S'
+site_author: 'MingZhao'
 
 repo_url: https://github.com/Lighter-z/myWiKi
 
+#主题
 theme: 
   name: material
   custom_dir: mkdocs_windmill
@@ -11,6 +12,7 @@ theme:
   static_templates: [404.html]
   search_index_only: true
   include_search_page: true
+  nav_style: light
 
 # This should be renamed to nav for mkdocs 1.0+
 nav:
@@ -36,6 +38,7 @@ nav:
   - Pr: 软件使用/001-Pr.md
 - 编程:
   - C语言: 编程/c语言.md
+  
 extra_javascript:
   - https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js
@@ -43,23 +46,28 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js
   - https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js
   - js/umlconvert.js
+  
 markdown_extensions:
-  - toc:
-      permalink: '#'
+  - toc:              # 锚点
+      permalink: '#'  # 对加粗和斜体更好的检测
   - smarty
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
+  - pymdownx.caret   # 下划线上标
+  - pymdownx.tilde   # 删除线下标
+  - pymdownx.critic  # 增加删除修改高亮注释，可修饰行内或段落
+  - pymdownx.details # 提示块可折叠
+  - pymdownx.emoji:  # 表情
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences:
+  - pymdownx.inlinehilite  # 行内代码高亮
+  - pymdownx.magiclink     # 自动识别超链接
+  - pymdownx.mark          # 文本高亮
+  - pymdownx.smartsymbols  # 符号转换
+  - codehilite:    # 代码高亮，显示行号
+      guess_lang: false
+      linenums: true
+  - pymdownx.superfences:  # 代码嵌套在列表里
       custom_fences: [
             {name: flow, class: uml-flowchart}
            ,{name: sequence, class: uml-sequence-diagram}
@@ -67,9 +75,17 @@ markdown_extensions:
       ]
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tilde
-  
+  - admonition  # 提示块
+  - footnotes  # 脚注
+  - meta  # 定义元数据，通过文章上下文控制，如disqus
+#  - pymdownx.arithmatex  # 数学公式
 
+# PDF导出插件
+plugins:
+  - search
+#  - pdf-export #这个插件还有点问题，没有更新
+
+#扩展样式
 extra:
   history_buttons: false
   version: v1.0.4

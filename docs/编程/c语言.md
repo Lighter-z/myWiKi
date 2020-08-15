@@ -15,7 +15,6 @@ graph LR;
     	构造类型-->共用体&#160union
     数据类型-->指针类型
     数据类型-->空类型&#160void
-    
 ```
 ## 1.1 字节
 
@@ -47,14 +46,14 @@ volatile是一个类型修饰符（type specifier）.volatile的作用是作为�
 2. 一个指针可以是volatile 吗？解释为什么？
 * 是的。尽管这并不很常见。一个例子是当一个中服务子程序修该一个指向一个buffer的指针时。
 3. 下面的函数有什么错误：
-```
+```C
 int square(volatile int *ptr)
 {
   return ptr *ptr;
 }
 ```
 * 这段代码的目的是用来返指针*ptr指向值的平方，但是，由于*ptr指向一个volatile型参数，编译器将产生类似下面的代码：
-```
+```C
 int square(volatile int *ptr)
 {
   int a,b;
@@ -64,7 +63,7 @@ int square(volatile int *ptr)
 }
 ```
 * 由于*ptr的值可能被意想不到地该变，因此a和b可能是不同的。结果，这段代码可能返不是你所期望的平方值！正确的代码如下：
-```
+```C
 int square(volatile int *ptr)
 {
   int a;
@@ -73,7 +72,7 @@ int square(volatile int *ptr)
 }
 ```
 ## 2.2 register
-* 为了提高效率，C语言允许将局部变量得值放在 CPU中的寄存器中，这种变量叫“寄存器变量”，用关键字register作声明。
+* 为了提高效率，C语言允许将局部变量得值放在 CPU中的寄存器中，这种变量叫`寄存器变量`，用关键字register作声明。
 
 > 1. 只有局部自动变量和形式参数可以作为寄存器变量
 > 2. 一个计算机中的寄存器变量有限，不能随意定义寄存器变量
