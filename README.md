@@ -34,7 +34,7 @@ nav:
 ## Demo and documentation
 
 More details are on this site generated with the Windmill theme:
-- [Usage](https://gristlabs.github.io/mkdocs-windmill/#) for more on installation and usage.
+- [Usage](https://lighter-z.github.io/myWiKi/#) for more on installation and usage.
 - [Customization](https://gristlabs.github.io/mkdocs-windmill/#customization/) for extra configuration options that Windmill supports.
 
 ## Development

@@ -5,7 +5,7 @@ VERSION = '1.0.4'
 setup(
     name="mkdocs-windmill",
     version=VERSION,
-    url='https://github.com/gristlabs/mkdocs-windmill',
+    url='https://github.com/Lighter-z/myWiKi',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
@@ -18,7 +18,7 @@ setup(
     license='MIT',
     description='MkDocs theme focused on navigation and usability',
     author='Dmitry S',
-    author_email='dmitry@getgrist.com',
+    author_email='1106606588@qq.com',
     packages=find_packages(),
     include_package_data=True,
     entry_points={
