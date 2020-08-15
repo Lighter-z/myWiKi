@@ -1,10 +1,42 @@
-site_name: My Docs  
+site_name: 'MingZhao'
+site_description: 'MkDocs theme focused on navigation and usability.'
+site_author: 'Dmitry S'
+
+repo_url: https://github.com/Lighter-z/myWiKi
+
+theme:
+  name: null
+  custom_dir: mkdocs_windmill
+  # Copy settings from mkdocs_theme.yml, which is ignored by custom_dir themes.
+  static_templates: [404.html]
+  search_index_only: true
+  include_search_page: true
+
+# This should be renamed to nav for mkdocs 1.0+
 nav:
-    - Home: index.md
-    - WiKi: WiKi.md
-    - 嵌入式:  嵌入式/00-嵌入式.md
-    - 软件使用:  软件使用/000-软件使用.md
+- Usage: index.md
+- Customization: customization.md
+- Samples:
+  - Sample Page A: sample-a.md
+  - Sample Subfolder:
+    - Sample Subpage A1: sample/sample-a1.md
+    - Sample Subpage A2: sample/sample-a2.md
+  - Sample Page B: sample-b.md
+- MKDocs: 
+  - WiKi: WiKi.md
+- 嵌入式:
+  - 单片机: 
+    - STM32: 嵌入式/01-单片机/000-STM32.md
+    - ESP8266: 嵌入式/01-单片机/001-ESP8266.md
+  - RTOS:
+    - RT-Thread: 嵌入式/02-RTOS/000-RT-Thread.md
+- 软件使用:
+  - Git: 软件使用/000-git.md
+  - Pr: 软件使用/001-Pr.md
+markdown_extensions:
+  - toc:
+      permalink: '#'
 
-
-theme: 'readthedocs'
-
+extra:
+  history_buttons: false
+  version: v1.0.4
