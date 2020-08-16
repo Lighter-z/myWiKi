@@ -1,35 +1,40 @@
 #WiKi搭建
 * [中文教程](https://markdown-docs-zh.readthedocs.io/zh_CN/latest/)
-1. 系统
-  * Ubuntu系统  
-     ```
-     sudo apt-get install mkdocs
-     ```
+  1.系统
+* Ubuntu系统  
+   ```
+   sudo apt-get install mkdocs
+   ```
 
-  * Windows系统  
+* Windows系统  
+   ` pip install mkdocs`
 
-     `sudo apt-get install mkdocs`
+2.环境  
 
-2. 环境  
-  2.1 安装python  
-  2.2 安装pip  
+2.1安装python  
+
+2.2安装pip  
+
+```
+  pip install --upgrade pip
+```
+
+  * 如果出错使用下面命令  
     ```
-    pip install --upgrade pip
+    pip install lxml
     ```
-    * 如果出错使用下面命令  
-      ```
-      pip install lxml
-      ```
-3. 安装MKDocs  
-      ```
-      pip install mkdocs
-      ```
-  * 确认是否安装正确  
-      ```
-      mkdocs --version
-      ```
 
-  * 创建一个WiKi  
+3.安装MKDocs  
+    ​```
+    pip install mkdocs
+    ​```
+
+* 确认是否安装正确  
+    ```
+    mkdocs --version
+    ```
+
+* 创建一个WiKi  
     ```
     mkdocs new myWiKi
     cd myWiKi
@@ -37,12 +42,14 @@
     * docs文件夹下存放的就是自己写的Markdown文章，系统默认会生成一个index.md文件  
     * mkdocs.yml是wiki网站的配置文件（主题、目录、语言等  ）  
 
-  * 预览WiKi(启动mkdocs服务器)  
-    ```
-    mkdocs serve
-    ```
+* 预览WiKi(启动mkdocs服务器)  
+```
+mkdocs serve
+```
     * 本地访问：在浏览器中输入127.0.0.1:8000访问wiki    
-4. 将WiKi站点托管到Github    
+
+5.将WiKi站点托管到Github    
+
   * 在Github上创建一个新仓库(仓库名要与你的wiki文件夹名一致)  
   * 初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库    
   ```
@@ -64,7 +71,7 @@
   https://lighter-z.github.io/myWiKi/
   ```
 
-5. 其他命令
+6.其他命令
 
    * `mkdocs new '工程名'` 创建新的MkDocs工程
 
@@ -82,3 +89,11 @@
      mkdocs build --clean
      ```
 
+# mkdocs-material
+
+1.安装
+
+  `pip install mkdocs mkdocs-material`  
+
+* 如果下载过慢，可更换安装源为豆瓣  
+  `pip install --trusted-host pypi.douban.com -i http://pypi.douban.com/simple/ mkdocs mkdocs-material`

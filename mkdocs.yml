@@ -38,6 +38,7 @@ nav:
   - Pr: 软件使用/001-Pr.md
 - 编程:
   - C语言: 编程/c语言.md
+- 调试: 嵌入式/00-调试.md
   
 extra_javascript:
   - https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
