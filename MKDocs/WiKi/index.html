@@ -34,6 +34,8 @@
         var pageToc = [
           {title: "WiKi\u642d\u5efa", url: "#_top", children: [
           ]},
+          {title: "mkdocs-material", url: "#mkdocs-material", children: [
+          ]},
         ];
 
     </script>
@@ -88,35 +90,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="wiki">WiKi搭建<a class="headerlink" href="#wiki" title="Permanent link">#</a></h1>
 <ul>
-<li><a href="https://markdown-docs-zh.readthedocs.io/zh_CN/latest/">中文教程</a></li>
-<li>系统</li>
+<li><a href="https://markdown-docs-zh.readthedocs.io/zh_CN/latest/">中文教程</a>
+  1.系统</li>
 <li>
 <p>Ubuntu系统<br />
-     <div class="highlight"><pre><span></span><code>sudo apt-get install mkdocs
+   <div class="highlight"><pre><span></span><code>sudo apt-get install mkdocs
 </code></pre></div></p>
 </li>
 <li>
-<p>Windows系统  </p>
-<p><code>sudo apt-get install mkdocs</code></p>
+<p>Windows系统<br />
+<code>pip install mkdocs</code></p>
 </li>
-<li>
-<p>环境<br />
-  2.1 安装python<br />
-  2.2 安装pip<br />
-    <div class="highlight"><pre><span></span><code>pip install --upgrade pip
-</code></pre></div></p>
+</ul>
+<p>2.环境  </p>
+<p>2.1安装python  </p>
+<p>2.2安装pip  </p>
+<div class="highlight"><pre><span></span><code>  pip install --upgrade pip
+</code></pre></div>
+
 <ul>
 <li>如果出错使用下面命令<br />
-  <div class="highlight"><pre><span></span><code>pip install lxml
+    <div class="highlight"><pre><span></span><code>pip install lxml
 </code></pre></div></li>
 </ul>
-</li>
-<li>安装MKDocs<br />
-      <div class="highlight"><pre><span></span><code>pip install mkdocs
-</code></pre></div></li>
+<p>3.安装MKDocs<br />
+    ​<code>pip install mkdocs
+    ​</code></p>
+<ul>
 <li>
 <p>确认是否安装正确<br />
-      <div class="highlight"><pre><span></span><code>mkdocs --version
+    <div class="highlight"><pre><span></span><code>mkdocs --version
 </code></pre></div></p>
 </li>
 <li>
@@ -131,13 +134,15 @@ cd myWiKi
 </li>
 <li>
 <p>预览WiKi(启动mkdocs服务器)<br />
-    <div class="highlight"><pre><span></span><code>mkdocs serve
+<div class="highlight"><pre><span></span><code>mkdocs serve
 </code></pre></div></p>
 <ul>
 <li>本地访问：在浏览器中输入127.0.0.1:8000访问wiki    </li>
 </ul>
 </li>
-<li>将WiKi站点托管到Github    </li>
+</ul>
+<p>5.将WiKi站点托管到Github    </p>
+<ul>
 <li>在Github上创建一个新仓库(仓库名要与你的wiki文件夹名一致)  </li>
 <li>初始化本地仓库(你的wiki文件夹)，添加远程仓库，提交本地修改并推送到远程仓库  <br />
   <div class="highlight"><pre><span></span><code>cd myWiKi
@@ -151,15 +156,13 @@ git push origin master
   <div class="highlight"><pre><span></span><code>mkdocs gh-deploy
 </code></pre></div></li>
 <li>现在你的wiki站点（HTML文件）在gh-pages分支，你的wiki站点（markdown文件）在master分支。  </li>
-<li>
-<p>通过以下网址访问你的WiKi<br />
+<li>通过以下网址访问你的WiKi<br />
   <div class="highlight"><pre><span></span><code>https://user_name.github.io/repository_name
 https://lighter-z.github.io/myWiKi/
-</code></pre></div></p>
-</li>
-<li>
-<p>其他命令</p>
-</li>
+</code></pre></div></li>
+</ul>
+<p>6.其他命令</p>
+<ul>
 <li>
 <p><code>mkdocs new '工程名'</code> 创建新的MkDocs工程</p>
 </li>
@@ -181,6 +184,13 @@ https://lighter-z.github.io/myWiKi/
 </code></pre></div>
 
 </li>
+</ul>
+<h1 id="mkdocs-material">mkdocs-material<a class="headerlink" href="#mkdocs-material" title="Permanent link">#</a></h1>
+<p>1.安装</p>
+<p><code>pip install mkdocs mkdocs-material</code>  </p>
+<ul>
+<li>如果下载过慢，可更换安装源为豆瓣<br />
+<code>pip install --trusted-host pypi.douban.com -i http://pypi.douban.com/simple/ mkdocs mkdocs-material</code></li>
 </ul>
 
   <br>

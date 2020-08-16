@@ -32,7 +32,11 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "\u8054\u7f51", url: "#_top", children: [
+          {title: "env\u4f7f\u7528", url: "#_top", children: [
+              {title: "menuconfig", url: "#menuconfig" },
+          ]},
+          {title: "\u8054\u7f51", url: "#_1", children: [
+              {title: "\u8fde\u63a5OneNet", url: "#onenet" },
               {title: "esp8266", url: "#esp8266" },
           ]},
         ];
@@ -87,7 +91,54 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="_1">联网<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+    <h1 id="env">env使用<a class="headerlink" href="#env" title="Permanent link">#</a></h1>
+<p><a href="https://www.rt-thread.org/document/site/programming-manual/env/env/">官方手册</a></p>
+<p>1.构建工程</p>
+<p><code>scons --target=mdk5  (也可以写其他编译器 例如 mdk4 IAR)</code></p>
+<p>2.使用内部的gcc编译器</p>
+<p><code>scons</code></p>
+<h2 id="menuconfig">menuconfig<a class="headerlink" href="#menuconfig" title="Permanent link">#</a></h2>
+<p>1.添加软件包</p>
+<ul>
+<li>在menuconfig中选择软件包侯，保存退出</li>
+<li>输入<code>pkgs --update</code></li>
+<li>重新构建工程<code>scons --target=mdk5</code></li>
+</ul>
+<p>2.env配置</p>
+<p><code>menuconfig -s</code></p>
+<p>3.全局搜索</p>
+<p>按下 / 是搜索</p>
+<p>4.选项说明</p>
+<p>shift + ? 可以查看该选项的解释</p>
+<h1 id="_1">联网<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="onenet">连接OneNet<a class="headerlink" href="#onenet" title="Permanent link">#</a></h2>
+<p><a href="https://www.rt-thread.org/document/site/tutorial/qemu-network/onenet/onenet/#_1">官方参考文档</a></p>
+<ul>
+<li>修改<code>rtconfig.h</code>中关于WiFi与OneNet的配置信息</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/* Wiced WiFi */</span>
+<span class="cp">#define PKG_USING_AT_DEVICE</span>
+<span class="cp">#define AT_DEVICE_USING_ESP8266</span>
+<span class="cp">#define AT_DEVICE_ESP8266_SAMPLE</span>
+<span class="cp">#define ESP8266_SAMPLE_WIFI_SSID &quot;rtthread&quot;</span>
+<span class="cp">#define ESP8266_SAMPLE_WIFI_PASSWORD &quot;12345678&quot;</span>
+<span class="cp">#define ESP8266_SAMPLE_CLIENT_NAME &quot;uart2&quot;</span>
+<span class="cp">#define ESP8266_SAMPLE_RECV_BUFF_LEN 512</span>
+<span class="cp">#define PKG_USING_AT_DEVICE_V203</span>
+<span class="cp">#define PKG_AT_DEVICE_VER_NUM 0x20003</span>
+
+<span class="cm">/* IoT Cloud */</span>
+<span class="cp">#define PKG_USING_ONENET</span>
+<span class="cp">#define PKG_USING_ONENET_SAMPLE          </span><span class="c1">//开启 OneNET 示例代码</span>
+<span class="cp">#define ONENET_USING_MQTT                </span><span class="c1">//开启 MQTT 协议连接 OneNET 支持</span>
+<span class="cp">#define ONENET_INFO_DEVID &quot;29573339&quot;     </span><span class="c1">//设备ID</span>
+<span class="cp">#define ONENET_INFO_AUTH &quot;EF4016D6658466CA3E3606&quot;            </span><span class="c1">//鉴权信息</span>
+<span class="cp">#define ONENET_INFO_APIKEY &quot;a2gVVf1hggZfuATkNogulHK1V=s=&quot;    </span><span class="c1">//配置云端创建设备时获取的 APIkey</span>
+<span class="cp">#define ONENET_INFO_PROID &quot;131494&quot;      </span><span class="c1">//产品ID </span>
+<span class="cp">#define ONENET_MASTER_APIKEY &quot;U=wJJ=OEpZsZEHmdPrsKwH2hFYw=&quot;  </span><span class="c1">//产品APIKey</span>
+<span class="cp">#define PKG_USING_ONENET_LATEST_VERSION</span>
+</code></pre></div>
+
 <h2 id="esp8266">esp8266<a class="headerlink" href="#esp8266" title="Permanent link">#</a></h2>
 <h3 id="_2">遇见的问题<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>1.没有<code>AT+CIPDNS_CUR?</code>命令<br />
