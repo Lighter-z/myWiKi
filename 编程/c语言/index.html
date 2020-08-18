@@ -44,6 +44,8 @@
               {title: "3.1 \u6761\u4ef6\u7f16\u8bd1", url: "#31" },
               {title: "3.2 #define", url: "#32-define" },
           ]},
+          {title: "4. \u5934\u6587\u4ef6\u5305\u542b", url: "#4", children: [
+          ]},
         ];
 
     </script>
@@ -112,7 +114,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     数据类型--&gt;指针类型
     数据类型--&gt;空类型&amp;#160void</code></pre>
 
-<h2 id="11">1.1 字节<a class="headerlink" href="#11" title="Permanent link">#</a></h2>
+<h3 id="11">1.1 字节<a class="headerlink" href="#11" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -165,17 +167,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </tbody>
 </table>
 <h1 id="2">2. 关键字<a class="headerlink" href="#2" title="Permanent link">#</a></h1>
-<h2 id="21-volite">2.1 volite<a class="headerlink" href="#21-volite" title="Permanent link">#</a></h2>
-<h3 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
+<h3 id="21-volite">2.1 volite<a class="headerlink" href="#21-volite" title="Permanent link">#</a></h3>
+<h4 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
 <p>volatile是一个类型修饰符（type specifier）.volatile的作用是作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值。volatile的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假设这个变量的值了。</p>
-<h3 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<h4 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
 <p>一个定义为volatile的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假设这个变量的值了。精确地说就是，优化器在用到这个变量时必须每次都小心地重新读取这个变量的值，而不是使用保存在寄存器里的备份。</p>
 <p>示例： <br />
 1. 并行设备的硬件寄存器（如：状态寄存器）<br />
 2. 一个中断服务子程序中会访问到的非自动变量(Non-automatic variables) <br />
 3. 多线程应用中被几个任务共享的变量  <br />
 4. 防止被编译器优化，入for循环延时程序。   </p>
-<h3 id="_3">具体例子<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h4 id="_3">具体例子<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
 <p>1.一个参数既可以是const还可以是volatile吗？解释为什么？</p>
 <ul>
 <li>是的。一个例子是只读的状态寄存器。它是volatile因为它可能被意想不到地改变。它是const因为程序不应该试图去修改它。</li>
@@ -214,7 +216,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre></div></p>
 </li>
 </ul>
-<h2 id="22-register">2.2 register<a class="headerlink" href="#22-register" title="Permanent link">#</a></h2>
+<h3 id="22-register">2.2 register<a class="headerlink" href="#22-register" title="Permanent link">#</a></h3>
 <ul>
 <li>为了提高效率，C语言允许将局部变量得值放在 CPU中的寄存器中，这种变量叫<code>寄存器变量</code>，用关键字register作声明。</li>
 </ul>
@@ -225,7 +227,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>局部静态变量不能定义为寄存器变量</li>
 </ol>
 </blockquote>
-<h2 id="23-const">2.3 const<a class="headerlink" href="#23-const" title="Permanent link">#</a></h2>
+<h3 id="23-const">2.3 const<a class="headerlink" href="#23-const" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p>const 只读</p>
@@ -283,23 +285,96 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 </ul>
 <h1 id="3">3. 预处理<a class="headerlink" href="#3" title="Permanent link">#</a></h1>
-<h2 id="31">3.1 条件编译<a class="headerlink" href="#31" title="Permanent link">#</a></h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>* 凡是以`#`开头的均为预处理命令。
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="31">3.1 条件编译<a class="headerlink" href="#31" title="Permanent link">#</a></h3>
 <ol>
 <li>条件编译中使用的两种条件判定方法分别是<code>#if</code>和<code>ifdef</code></li>
 </ol>
-<h2 id="32-define">3.2 #define<a class="headerlink" href="#32-define" title="Permanent link">#</a></h2>
+<h3 id="32-define">3.2 #define<a class="headerlink" href="#32-define" title="Permanent link">#</a></h3>
 <ol>
 <li>
+<p>无参宏定义</p>
+<ul>
+<li>无参宏定义后不带参数：<code>#define 标识符字符串</code><ul>
+<li><code>define</code>为宏定义命令</li>
+<li><code>标识符</code>为定义的宏名</li>
+<li><code>字符串</code>可以是常数，表达式，格式串等等</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>宏定义只是一种简单的替换，预处理时对它不做任何的检查。因此，若有错误只能在编译阶段发现。</li>
+<li>宏定义不是说明或语句，在行末不需要加分号，若加分号会将分号一起替换。</li>
+<li>宏定义必须写在函数之外，其作用域为宏定义命令起到源程序结束。若想终止其作用域可以使用<code>#undef</code>命令</li>
+<li>宏名若在源程序中用引号括起来，则预处理程序不对其进行宏替换。</li>
+<li>宏定义允许嵌套，在宏定义的字符串中可以使用已经定义的宏。在宏展开时，由预处理程序层层替换。
+  <div class="highlight"><pre><span></span><code><span class="cp">#define PI 3.1415926</span>
+<span class="cp">#define S (PI * y * y)</span>
+</code></pre></div></li>
+<li>习惯使用大写表示宏，以便与变量进行区别。也允许使用小写。</li>
+<li>可以使用宏定义表示数据类型
+  <div class="highlight"><pre><span></span><code><span class="cp">#define STU struct stu</span>
+<span class="n">STU</span> <span class="n">a</span><span class="p">;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>带参宏定义</p>
+<ul>
+<li>在宏定义中的参数为形式参数；在宏调用中的参数为实际参数。<ul>
+<li>对于带参数的宏，在调用中，不仅要宏展开，而且要用实参去替代形参</li>
+<li>带参宏定义一般格式：<code>#define 宏名(形参) 字符串</code></li>
+<li>带参宏调用一般形式：<code>宏名(形参)</code>
+  <div class="highlight"><pre><span></span><code><span class="cp">#define M(y) y*y+3*y    </span><span class="c1">//定义</span>
+<span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">M</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>               <span class="c1">//调用</span>
+<span class="c1">//预处理后的结果：</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">5</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>带参宏定义，宏名与形参之间不能有空格出现
+  <div class="highlight"><pre><span></span><code><span class="c1">//正确</span>
+<span class="cp">#define MAX(a, b) (a &gt; b)?a:b</span>
+<span class="c1">//错误</span>
+<span class="cp">#define MAX (a, b) (a &gt; b)?a:b</span>
+</code></pre></div></li>
+<li>在带参宏定义中，形参不分配内存单元。因此不必做类型定义。而宏调用中的实参要有具体的值。要用他们去替代形参，因此必须做类型说明。<code>这是与函数不同的：在函数中，形参和实参是两个不同的量，有各自的作用域，调用时要把实参值赋予形参，进行“值传递”。而带参宏中，只是符号代换，不存在值传递的问题。</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
 <p>尽量使用const 替换 #define</p>
-<p>1.1 在旧版本的C中，若定义一个常量必须使用预处理器<code>#define MAX 1024</code>，MAX宏定义在预处理阶段就被替换为1024。因此，MAX并没有被加入到符号定义中。如果在程序中运用这个常量获得到一个编译错误时，这时提示信息可能会是1024,而不是MAX.因此查找起来需要花费时间。解决办法就是使用const：<code>const int MAX = 1024</code>  </p>
+<p>3.1 在旧版本的C中，若定义一个常量必须使用预处理器<code>#define MAX 1024</code>，MAX宏定义在预处理阶段就被替换为1024。因此，MAX并没有被加入到符号定义中。如果在程序中运用这个常量获得到一个编译错误时，这时提示信息可能会是1024,而不是MAX.因此查找起来需要花费时间。解决办法就是使用const：<code>const int MAX = 1024</code>  </p>
 </li>
 <li>
 <p>const与#define区别</p>
-<p>2.1 const是有类型的，可以进行编译器类型安全检查；#define是没有类型的，不能进行类型检查。</p>
-<p>2.2 const有作用域；#define不重视作用域，默认定义处到文件结尾。如果需要定义一个在指定作用域下有效的变量，那么不能使用#deifne。</p>
-<p>​</p>
+<p>4.1 const是有类型的，可以进行编译器类型安全检查；#define是没有类型的，不能进行类型检查。</p>
+<p>4.2 const有作用域；#define不重视作用域，默认定义处到文件结尾。如果需要定义一个在指定作用域下有效的变量，那么不能使用#deifne。</p>
 </li>
 </ol>
+<h1 id="4">4. 头文件包含<a class="headerlink" href="#4" title="Permanent link">#</a></h1>
+<ul>
+<li>
+<p><code>#include &lt;&gt;</code>与<code>#include ""</code>区别</p>
+<ul>
+<li>&lt;&gt;包含系统文件。例如：c库文件（不是程序员写的库文件）。&lt;&gt; 只会到系统指定的路径下找相应的库文件（隐含意思：不会在当前路径下去寻找），找不到就会提示该文件不存在。</li>
+<li>&ldquo; &ldquo;包含自己写的头文件。&rdquo; &rdquo; 现在当前路径下寻找，若没有找到 会到系统指定的路径下寻找，如果没找到 会提示该文件不存在。</li>
+</ul>
+</li>
+<li>
+<p>头文件包含的真实含义:</p>
+<ul>
+<li>在#include<xx.h>的那一行，将xx.h这个文件的内容原地展开，替换#include<xx.h>这行语句。处理过程在<code>预处理</code>中进行。</li>
+</ul>
+</li>
+</ul>
 
   <br>
     
