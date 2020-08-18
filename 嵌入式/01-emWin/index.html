@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="MingZhao">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>emWin - MingZhao</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u6587\u672c\u663e\u793a", url: "#_top", children: [
+              {title: "\u4ee3\u7801\u793a\u4f8b", url: "#_2" },
+          ]},
+          {title: "\u6570\u503c\u663e\u793a", url: "#_3", children: [
+              {title: "\u4ee3\u7801\u793a\u4f8b", url: "#_4" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      <script src="../../js/umlconvert.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/000-git/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/000-git/" class="btn btn-xs btn-link">
+        Git
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../02-RTOS/000-RT-Thread/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../02-RTOS/000-RT-Thread/" class="btn btn-xs btn-link">
+        RT-Thread
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p><a href="https://ebf-emwin-tutorial.readthedocs.io/zh_CN/latest/index.html">野火emWin教程</a></p>
+<h1 id="_1">文本显示<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="_2">代码示例<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">TextInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">U8</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="cm">/* 设置背景色 */</span>
+    <span class="n">GUI_SetBkColor</span><span class="p">(</span><span class="n">GUI_BLUE</span><span class="p">);</span>
+    <span class="n">GUI_Clear</span><span class="p">();</span>
+
+    <span class="cm">/* 设置字体大小 */</span>
+    <span class="n">GUI_SetFont</span><span class="p">(</span><span class="n">GUI_FONT_32_1</span><span class="p">);</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;STemWIN@EmbeddedFire STM32F429&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="c1">//显示文本</span>
+    <span class="n">GUI_GotoXY</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="n">GUI_DispString</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span>
+
+    <span class="cm">/* 画线 */</span>
+    <span class="n">GUI_SetPenSize</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_RED</span><span class="p">);</span>
+    <span class="n">GUI_DrawLine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_GREEN</span><span class="p">);</span>
+    <span class="n">GUI_DrawLine</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="cm">/* 绘制文本 */</span>
+    <span class="n">GUI_SetBkColor</span><span class="p">(</span><span class="n">GUI_BLACK</span><span class="p">);</span>
+    <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_WHITE</span><span class="p">);</span>
+    <span class="n">GUI_SetFont</span><span class="p">(</span><span class="n">GUI_FONT_24B_ASCII</span><span class="p">);</span>
+    <span class="cm">/* 正常模式 */</span>
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_NORMAL</span><span class="p">);</span>
+    <span class="c1">//居中显示字符串</span>
+    <span class="n">GUI_DispStringHCenterAt</span><span class="p">(</span><span class="s">&quot;GUI_TM_NORMAL&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+    <span class="cm">/* 反转显示 */</span>
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_REV</span><span class="p">);</span>
+    <span class="n">GUI_DispStringHCenterAt</span><span class="p">(</span><span class="s">&quot;GUI_TM_REV&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">120</span> <span class="o">+</span> <span class="mi">24</span><span class="p">);</span>
+    <span class="cm">/* 透明文本 */</span>
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_TRANS</span><span class="p">);</span>
+    <span class="n">GUI_DispStringHCenterAt</span><span class="p">(</span><span class="s">&quot;GUI_TM_TRANS&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">120</span> <span class="o">+</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="cm">/* 异或文本 */</span>  
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_XOR</span><span class="p">);</span>  <span class="c1">//文本反转背景</span>
+    <span class="n">GUI_DispStringHCenterAt</span><span class="p">(</span><span class="s">&quot;GUI_TM_XOR&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">120</span> <span class="o">+</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="cm">/* 透明反转文本 */</span>
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_TRANS</span> <span class="o">|</span> <span class="n">GUI_TM_REV</span><span class="p">);</span>
+    <span class="n">GUI_DispStringHCenterAt</span><span class="p">(</span><span class="s">&quot;GUI_TM_TRANS | GUI_TM_REV&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">120</span> <span class="o">+</span> <span class="mi">24</span><span class="o">*</span> <span class="mi">4</span><span class="p">);</span>
+
+    <span class="cm">/* 在矩形区域内显示文本 */</span>
+    <span class="n">GUI_SetFont</span><span class="p">(</span><span class="n">GUI_FONT_24B_ASCII</span><span class="p">);</span>
+    <span class="n">GUI_SetTextMode</span><span class="p">(</span><span class="n">GUI_TM_TRANS</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_WHITE</span><span class="p">);</span>
+        <span class="n">GUI_FillRectEx</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rect1</span><span class="p">);</span>
+        <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_RED</span><span class="p">);</span>
+        <span class="n">GUI_DispStringInRectWrap</span><span class="p">(</span><span class="n">acText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect1</span><span class="p">,</span> <span class="n">GUI_TA_LEFT</span><span class="p">,</span> <span class="n">aWm</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>  <span class="c1">//在指定矩形中显示包含在矩形中的字符串，带换行模式</span>
+        <span class="n">rect1</span><span class="p">.</span><span class="n">x0</span> <span class="o">+=</span> <span class="mi">156</span><span class="p">;</span>
+        <span class="n">rect1</span><span class="p">.</span><span class="n">x1</span> <span class="o">+=</span> <span class="mi">156</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_WHITE</span><span class="p">);</span>
+        <span class="n">GUI_FillRectEx</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rect2</span><span class="p">);</span>
+        <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_RED</span><span class="p">);</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//在指定矩形中显示包含在矩形中的字符串，带换行 和旋转 模式</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="n">GUI_DispStringInRectWrapEx</span><span class="p">(</span><span class="n">acText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect2</span><span class="p">,</span> <span class="n">GUI_TA_LEFT</span><span class="p">,</span> <span class="n">aWm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">GUI_ROTATE_0</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">GUI_DispStringInRectWrapEx</span><span class="p">(</span><span class="n">acText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect2</span><span class="p">,</span> <span class="n">GUI_TA_LEFT</span><span class="p">,</span> <span class="n">aWm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">GUI_ROTATE_180</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">GUI_DispStringInRectWrapEx</span><span class="p">(</span><span class="n">acText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect2</span><span class="p">,</span> <span class="n">GUI_TA_LEFT</span><span class="p">,</span> <span class="n">aWm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">GUI_ROTATE_CW</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="n">GUI_DispStringInRectWrapEx</span><span class="p">(</span><span class="n">acText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect2</span><span class="p">,</span> <span class="n">GUI_TA_LEFT</span><span class="p">,</span> <span class="n">aWm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">GUI_ROTATE_CCW</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">rect2</span><span class="p">.</span><span class="n">x0</span> <span class="o">+=</span> <span class="mi">156</span><span class="p">;</span>
+        <span class="n">rect2</span><span class="p">.</span><span class="n">x1</span> <span class="o">+=</span> <span class="mi">156</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h1 id="_3">数值显示<a class="headerlink" href="#_3" title="Permanent link">#</a></h1>
+<h2 id="_4">代码示例<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<h3 id="_5">十进制数据显示<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">ValueInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* 设置背景色 */</span>
+    <span class="n">GUI_SetBkColor</span><span class="p">(</span><span class="n">GUI_YELLOW</span><span class="p">);</span>
+    <span class="n">GUI_Clear</span><span class="p">();</span>
+
+    <span class="n">GUI_SetFont</span><span class="p">(</span><span class="n">GUI_FONT_24B_ASCII</span><span class="p">);</span>
+    <span class="n">GUI_SetColor</span><span class="p">(</span><span class="n">GUI_WHITE</span><span class="p">);</span>
+
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispDec():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="c1">//GUI_DispDec()当前位置显示十进制数 </span>
+    <span class="c1">//第一个参数：要显示的数据；第二个参数：显示多少位字符</span>
+    <span class="c1">//当显示的数据长度&lt;字符位数，则前面补零显示</span>
+    <span class="n">GUI_DispDec</span><span class="p">(</span><span class="mi">444</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>  
+    <span class="n">GUI_GotoX</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">9</span><span class="p">);</span>  <span class="c1">//x坐标移到12*9的位置</span>
+    <span class="n">GUI_DispDec</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+    <span class="c1">//GUI_DispDecAt()指定位置显示十进制数</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispDecAt():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">GUI_DispDecAt</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="n">GUI_DispDecAt</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="mi">9</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+    <span class="c1">//GUI_DispDecMin()当前为位置显示最小位数的十进制数</span>
+    <span class="c1">//不需要指定数据长度，会自动使用最小长度值</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispDecMin():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="n">GUI_DispDecMin</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span> 
+    <span class="n">GUI_GotoX</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">9</span><span class="p">);</span>
+    <span class="n">GUI_DispDecMin</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">);</span>
+
+    <span class="c1">//当前位置显示指定位数的十进制数，带小数点</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispDecShift():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="n">GUI_DispDecShift</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">GUI_GotoX</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">9</span><span class="p">);</span>
+    <span class="n">GUI_DispDecShift</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+    <span class="c1">//当前位置显示十进制数 </span>
+    <span class="c1">//位数不足时，用空格代替前面的0</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispDecSpace():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="n">GUI_DispDecSpace</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+    <span class="c1">//当前位置显示指定位数的十进制数，带符号</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispSDec():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="n">GUI_DispSDec</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+    <span class="c1">//当前位置显示指定位数的十进制长数，带符号，小数点</span>
+    <span class="n">GUI_DispStringAt</span><span class="p">(</span><span class="s">&quot;GUI_DispSDecShift():&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="n">GUI_DispNextLine</span><span class="p">();</span>
+    <span class="n">GUI_DispSDecShift</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>所有十进制显示函数的数值类型都是有符号int型， 即可输入的数值范围为−231−231至231−1231−1。使用这些函数需要注意以下问题：</p>
+<p>(1) 待显示数值的最高位不能是0， 否则无法显示。例如需要显示的数是012345，不管指定的显示位数设置为多少，函数都无法显示。</p>
+<p>(2) 指定的显示位数必须大于等于待显示数值的位数，否则无法显示。例如待显示数为12345， 当指定显示位数小于5时，函数无法显示，大于5时，会在待显示数值的最高位补零，其中GUI_DispDecSpace()函数会在最高位补空格。</p>
+<p>(3) 如果待显示数值中含有负号或小数点，包括使用GUI_DispDecShift()和GUI_DispSDecShift()， 在指定显示位数时需要把这些符号也计算在内，否则函数无法正常显示。</p>
+</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/000-git/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/000-git/" class="btn btn-xs btn-link">
+        Git
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../02-RTOS/000-RT-Thread/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../02-RTOS/000-RT-Thread/" class="btn btn-xs btn-link">
+        RT-Thread
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://github.com/Lighter-z/myWiKi/edit/master/docs/嵌入式/01-emWin.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
