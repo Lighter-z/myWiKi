@@ -139,10 +139,51 @@ int square(volatile int *ptr)
     printf("a = %d \r\n", a);
     ```
 
+### 2.4 typedef
+
+* `typedef`与`#define`区别
+
+    * `typedef`仅限于为类型定义符号名称。`#define`不仅可以为类型定义别名，也可以为数值定义别名。
+    * `typedef`是由编译器解释执行的，`#define`是由预编译器进行处理的。
+
+    * 原理不同：
+
+        * `#define`是C语言中定义的语法，是预处理指令，在预处理时进行简单而机械的字符串替换，不作正确性检查，只有在编译已被展开的源程序时才会发现可能的错误并报错。
+        * `typedef`是关键字，在编译时处理，有类型检查功能。它在自己的作用域内给一个已经存在的类型一个别名，但不能在一个函数定义里面使用typedef。用typedef定义数组、指针、结构等类型会带来很大的方便，不仅使程序书写简单，也使意义明确，增强可读性。
+
+    * 功能不同：
+
+        * `typedef`用来定义类型的别名，起到类型易于记忆的功能。另一个功能是定义机器无关的类型。如定义一个REAL的浮点类型，在目标机器上它可以获得最高的精度：typedef long double REAL， 在不支持long double的机器上，看起来是这样的，typedef double REAL，在不支持double的机器上，是这样的，typedef float REAL
+        * `#define`不只是可以为类型取别名，还可以定义常量、变量、编译开关等。
+
+    * 作用域不同：
+
+        * `typedef`如果放在所有函数之外，它的作用域就是从它定义开始直到文件尾；如果放在某个函数内，定义域就是从定义开始直到该函数结尾；
+        * `#define`不管是在某个函数内，还是在所有函数之外，作用域都是从定义开始直到整个文件结尾。
+
+    * 对指针的操作不同：
+
+        * 示例：
+            ```C
+            #define INTPTR1 int*
+            typedef int* INTPTR2;
+
+            INTPTR1 p1, p2;
+            INTPTR2 p3, p4;
+
+            将它们转换后：
+            int*p1, p2
+            INTPTR2 p3, p4;
+            含义分别为:
+
+            声明一个指针变量p1和一个整型变量p2
+            声明两个指针变量p3、p4
+            ```
+
 
 # 3. 预处理
 
-    * 凡是以`#`开头的均为预处理命令。
+  * 凡是以`#`开头的均为预处理命令。
 
 ### 3.1 条件编译
 
@@ -172,9 +213,9 @@ int square(volatile int *ptr)
           #define STU struct stu
           STU a;
           ```
-          
+
   2. 带参宏定义
-    
+
     * 在宏定义中的参数为形式参数；在宏调用中的参数为实际参数。
         * 对于带参数的宏，在调用中，不仅要宏展开，而且要用实参去替代形参
         * 带参宏定义一般格式：`#define 宏名(形参) 字符串`
@@ -207,13 +248,114 @@ int square(volatile int *ptr)
 
     4.2 const有作用域；#define不重视作用域，默认定义处到文件结尾。如果需要定义一个在指定作用域下有效的变量，那么不能使用#deifne。
 
-# 4. 头文件包含
-  
+### 3.3 头文件包含
+
   * `#include <>`与`#include ""`区别
-      
+
       * <>包含系统文件。例如：c库文件（不是程序员写的库文件）。<> 只会到系统指定的路径下找相应的库文件（隐含意思：不会在当前路径下去寻找），找不到就会提示该文件不存在。
       * " "包含自己写的头文件。" " 现在当前路径下寻找，若没有找到 会到系统指定的路径下寻找，如果没找到 会提示该文件不存在。
-      
+
   * 头文件包含的真实含义:
 
       * 在#include<xx.h>的那一行，将xx.h这个文件的内容原地展开，替换#include<xx.h>这行语句。处理过程在`预处理`中进行。
+
+# 4. 共用体union
+
+  * 共用体是一种特殊的数据类型，`允许在相同的内存位置存储不同的数据类型`。一个具有多成员的共用体，任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式。
+
+  * 定义共用体：
+      ```C
+      union Data {
+        int i;
+        float f;
+        char str[20];
+      }data;
+      ```
+
+  * `共用体占用的内存应该足够存储共用体中最大的成员变量，即共用体的内存是其中所占字节最大的数据类型（结构体所占内存是所有变量之和）`。例如：上面示例中，Data将占用20个字节的内存空间。因为在各个成员中，字符串所占的空间是最大的。
+      ```C
+      //输出Data所占字节空间
+      #include <stdio.h>
+      #include <string.h>
+       
+      union Data {
+         int i;
+         float f;
+         char  str[20];
+      };
+       
+      int main( ) {
+         union Data data;        
+       
+         printf( "Memory size occupied by data : %d\n", sizeof(data));
+       
+         return 0;
+      }
+      ```
+      ![union_data](图片/union_data.png)
+
+  * 使用示例：
+
+      ```C
+      //同时使用
+      #include <stdio.h>
+      #include <string.h>
+      #include<stdlib.h>
+
+      union Data {
+          int i;
+          float f;
+          char str[20];
+      };
+
+      int main() {
+          union Data data;
+
+      /****************重点******************/
+         data.i = 1;
+         data.f = 22.2;
+         strcpy(data.str,"2019.8.3");
+
+         printf("data.i : %d\n",data.i);
+         printf("data.f : %f\n",data.f);
+         printf("data.str : %s\n",data.str);
+      /****************重点******************/   
+         
+         system("pause");
+      }
+      ```
+      ![union_use_error](图片/union_use_error.png)
+      
+      * 我的理解：因为共用体的所有变量使用的是同一个内存，所以f会把i的定义覆盖，同理，str会把f的覆盖。  
+      * 菜鸟教程说明：在这里，我们可以看到共用体的 i 和 f 成员的值有损坏，因为最后赋给变量的值占用了内存位置，这也是 str 成员能够完好输出的原因。
+
+      ```C
+      //分开使用
+      #include <stdio.h>
+      #include <string.h>
+      #include<stdlib.h>
+    
+      union Data {
+          int i;
+          float f;
+          char str[20];
+      };
+    
+      int main() {
+          union Data data;
+    
+      /****************重点******************/
+          data.i = 1;
+          printf("data.i : %d\n",data.i);
+    
+          data.f = 22.2;
+          printf("data.f : %f\n",data.f);
+    
+          strcpy(data.str,"2019.8.3");
+          printf("data.str : %s\n",data.str);
+      /****************重点******************/   
+         
+         system("pause");
+      }
+      ```
+       ![union_succes](图片/union_succes.png)
