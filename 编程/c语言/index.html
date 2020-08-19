@@ -39,12 +39,14 @@
               {title: "2.1 volite", url: "#21-volite" },
               {title: "2.2 register", url: "#22-register" },
               {title: "2.3 const", url: "#23-const" },
+              {title: "2.4 typedef", url: "#24-typedef" },
           ]},
           {title: "3. \u9884\u5904\u7406", url: "#3", children: [
               {title: "3.1 \u6761\u4ef6\u7f16\u8bd1", url: "#31" },
               {title: "3.2 #define", url: "#32-define" },
+              {title: "3.3 \u5934\u6587\u4ef6\u5305\u542b", url: "#33" },
           ]},
-          {title: "4. \u5934\u6587\u4ef6\u5305\u542b", url: "#4", children: [
+          {title: "4. \u5171\u7528\u4f53union", url: "#4-union", children: [
           ]},
         ];
 
@@ -284,11 +286,63 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ol>
 </li>
 </ul>
-<h1 id="3">3. 预处理<a class="headerlink" href="#3" title="Permanent link">#</a></h1>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>* 凡是以`#`开头的均为预处理命令。
-</code></pre></div>
-</td></tr></table>
+<h3 id="24-typedef">2.4 typedef<a class="headerlink" href="#24-typedef" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><code>typedef</code>与<code>#define</code>区别</p>
+<ul>
+<li><code>typedef</code>仅限于为类型定义符号名称。<code>#define</code>不仅可以为类型定义别名，也可以为数值定义别名。</li>
+<li>
+<p><code>typedef</code>是由编译器解释执行的，<code>#define</code>是由预编译器进行处理的。</p>
+</li>
+<li>
+<p>原理不同：</p>
+<ul>
+<li><code>#define</code>是C语言中定义的语法，是预处理指令，在预处理时进行简单而机械的字符串替换，不作正确性检查，只有在编译已被展开的源程序时才会发现可能的错误并报错。</li>
+<li><code>typedef</code>是关键字，在编译时处理，有类型检查功能。它在自己的作用域内给一个已经存在的类型一个别名，但不能在一个函数定义里面使用typedef。用typedef定义数组、指针、结构等类型会带来很大的方便，不仅使程序书写简单，也使意义明确，增强可读性。</li>
+</ul>
+</li>
+<li>
+<p>功能不同：</p>
+<ul>
+<li><code>typedef</code>用来定义类型的别名，起到类型易于记忆的功能。另一个功能是定义机器无关的类型。如定义一个REAL的浮点类型，在目标机器上它可以获得最高的精度：typedef long double REAL， 在不支持long double的机器上，看起来是这样的，typedef double REAL，在不支持double的机器上，是这样的，typedef float REAL</li>
+<li><code>#define</code>不只是可以为类型取别名，还可以定义常量、变量、编译开关等。</li>
+</ul>
+</li>
+<li>
+<p>作用域不同：</p>
+<ul>
+<li><code>typedef</code>如果放在所有函数之外，它的作用域就是从它定义开始直到文件尾；如果放在某个函数内，定义域就是从定义开始直到该函数结尾；</li>
+<li><code>#define</code>不管是在某个函数内，还是在所有函数之外，作用域都是从定义开始直到整个文件结尾。</li>
+</ul>
+</li>
+<li>
+<p>对指针的操作不同：</p>
+<ul>
+<li>示例：
+    <div class="highlight"><pre><span></span><code><span class="cp">#define INTPTR1 int*</span>
+<span class="k">typedef</span> <span class="kt">int</span><span class="o">*</span> <span class="n">INTPTR2</span><span class="p">;</span>
 
+<span class="n">INTPTR1</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">;</span>
+<span class="n">INTPTR2</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">;</span>
+
+<span class="err">将它们转换后：</span>
+<span class="kt">int</span><span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span>
+<span class="n">INTPTR2</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">;</span>
+<span class="err">含义分别为</span><span class="o">:</span>
+
+<span class="err">声明一个指针变量</span><span class="n">p1和一个整型变量p2</span>
+<span class="err">声明两个指针变量</span><span class="n">p3</span><span class="err">、</span><span class="n">p4</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3">3. 预处理<a class="headerlink" href="#3" title="Permanent link">#</a></h1>
+<ul>
+<li>凡是以<code>#</code>开头的均为预处理命令。</li>
+</ul>
 <h3 id="31">3.1 条件编译<a class="headerlink" href="#31" title="Permanent link">#</a></h3>
 <ol>
 <li>条件编译中使用的两种条件判定方法分别是<code>#if</code>和<code>ifdef</code></li>
@@ -359,7 +413,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>4.2 const有作用域；#define不重视作用域，默认定义处到文件结尾。如果需要定义一个在指定作用域下有效的变量，那么不能使用#deifne。</p>
 </li>
 </ol>
-<h1 id="4">4. 头文件包含<a class="headerlink" href="#4" title="Permanent link">#</a></h1>
+<h3 id="33">3.3 头文件包含<a class="headerlink" href="#33" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p><code>#include &lt;&gt;</code>与<code>#include ""</code>区别</p>
@@ -373,6 +427,107 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <ul>
 <li>在#include<xx.h>的那一行，将xx.h这个文件的内容原地展开，替换#include<xx.h>这行语句。处理过程在<code>预处理</code>中进行。</li>
 </ul>
+</li>
+</ul>
+<h1 id="4-union">4. 共用体union<a class="headerlink" href="#4-union" title="Permanent link">#</a></h1>
+<ul>
+<li>
+<p>共用体是一种特殊的数据类型，<code>允许在相同的内存位置存储不同的数据类型</code>。一个具有多成员的共用体，任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式。</p>
+</li>
+<li>
+<p>定义共用体：
+      <div class="highlight"><pre><span></span><code><span class="k">union</span> <span class="n">Data</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="p">}</span><span class="n">data</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>共用体占用的内存应该足够存储共用体中最大的成员变量，即共用体的内存是其中所占字节最大的数据类型（结构体所占内存是所有变量之和）</code>。例如：上面示例中，Data将占用20个字节的内存空间。因为在各个成员中，字符串所占的空间是最大的。
+      <div class="highlight"><pre><span></span><code><span class="c1">//输出Data所占字节空间</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="k">union</span> <span class="n">Data</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+   <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+   <span class="kt">char</span>  <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+   <span class="k">union</span> <span class="n">Data</span> <span class="n">data</span><span class="p">;</span>        
+
+   <span class="n">printf</span><span class="p">(</span> <span class="s">&quot;Memory size occupied by data : %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+      <img alt="union_data" src="../%E5%9B%BE%E7%89%87/union_data.png" /></p>
+</li>
+<li>
+<p>使用示例：</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">//同时使用</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="k">union</span> <span class="n">Data</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">union</span> <span class="n">Data</span> <span class="n">data</span><span class="p">;</span>
+
+<span class="cm">/****************重点******************/</span>
+   <span class="n">data</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="n">data</span><span class="p">.</span><span class="n">f</span> <span class="o">=</span> <span class="mf">22.2</span><span class="p">;</span>
+   <span class="n">strcpy</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">str</span><span class="p">,</span><span class="s">&quot;2019.8.3&quot;</span><span class="p">);</span>
+
+   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.i : %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">i</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.f : %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.str : %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">str</span><span class="p">);</span>
+<span class="cm">/****************重点******************/</span>   
+
+   <span class="n">system</span><span class="p">(</span><span class="s">&quot;pause&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+  <img alt="union_use_error" src="../%E5%9B%BE%E7%89%87/union_use_error.png" /></p>
+<ul>
+<li>我的理解：因为共用体的所有变量使用的是同一个内存，所以f会把i的定义覆盖，同理，str会把f的覆盖。  </li>
+<li>菜鸟教程说明：在这里，我们可以看到共用体的 i 和 f 成员的值有损坏，因为最后赋给变量的值占用了内存位置，这也是 str 成员能够完好输出的原因。</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="c1">//分开使用</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="k">union</span> <span class="n">Data</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">union</span> <span class="n">Data</span> <span class="n">data</span><span class="p">;</span>
+
+<span class="cm">/****************重点******************/</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.i : %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">i</span><span class="p">);</span>
+
+    <span class="n">data</span><span class="p">.</span><span class="n">f</span> <span class="o">=</span> <span class="mf">22.2</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.f : %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">);</span>
+
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">str</span><span class="p">,</span><span class="s">&quot;2019.8.3&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;data.str : %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">.</span><span class="n">str</span><span class="p">);</span>
+<span class="cm">/****************重点******************/</span>   
+
+   <span class="n">system</span><span class="p">(</span><span class="s">&quot;pause&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+   <img alt="union_succes" src="../%E5%9B%BE%E7%89%87/union_succes.png" /></p>
 </li>
 </ul>
 
