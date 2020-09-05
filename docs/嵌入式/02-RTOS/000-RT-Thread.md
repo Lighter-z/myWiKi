@@ -62,6 +62,14 @@ shift + ? 可以查看该选项的解释
 #define PKG_USING_ONENET_LATEST_VERSION
 ```
 
+### OneNet软件包API
+
+[点击查看](https://github.com/RT-Thread-packages/onenet/blob/master/docs/api.md)
+
+### 函数说明
+
+* urc_recv_func
+* rt_kprintf怎么打印小数？
 
 
 ## esp8266
@@ -85,3 +93,42 @@ shift + ? 可以查看该选项的解释
      官网说使用该版本下的factory_xxx.bin，烧录在0地址下
 
      本人烧录未成功
+
+     ​
+
+# 文件系统
+
+## 1. 存储设备初始化
+
+* 开启spi驱动
+
+* 检查设备
+
+* 初始化，创建存储设备
+    * 使用W25Q128
+
+    * W25Q128说明
+
+      > W25Q128BV由65536可编程的页组成的，每页有256个字节。一次最多可以写256个字节。可以一次擦除16页（4KB sector erase），128页（32KB block erase）,256页(64KB block erase),或者擦除一整片。W25Q128BV 有4096个可擦除的扇区，256可擦除的块。4KB的扇区对于数据和参数存储有更高的灵活性。
+
+* 的
+
+## 2. 文件系统的使用
+
+### 2.1 文件系统初始化
+
+* DFS框架初始化
+  * dfs_init()函数
+* 中间层文件系统初始化（初始化具体的文件系统）
+  * 使用elm FatFS文件系统：elm_init()
+* 存储设备初始化（参考上面）
+* 的
+
+### 创建文件系统
+
+
+
+* 文件系统创建完成后需要重启设备。
+
+### 使用文件系统
+
