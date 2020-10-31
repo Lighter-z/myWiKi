@@ -34,6 +34,7 @@ nav:
   - RTOS:
     - RT-Thread: 嵌入式/02-RTOS/000-RT-Thread.md
   - emWin: 嵌入式/01-emWin.md
+  - LWIP: 嵌入式/02-LWIP.md
 - 软件使用:
   - Git: 软件使用/000-git.md
   - Pr: 软件使用/001-Pr.md
