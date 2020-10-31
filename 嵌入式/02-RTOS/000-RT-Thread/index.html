@@ -39,6 +39,10 @@
               {title: "\u8fde\u63a5OneNet", url: "#onenet" },
               {title: "esp8266", url: "#esp8266" },
           ]},
+          {title: "\u6587\u4ef6\u7cfb\u7edf", url: "#_4", children: [
+              {title: "1. \u5b58\u50a8\u8bbe\u5907\u521d\u59cb\u5316", url: "#1" },
+              {title: "2. \u6587\u4ef6\u7cfb\u7edf\u7684\u4f7f\u7528", url: "#2" },
+          ]},
         ];
 
     </script>
@@ -139,8 +143,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <span class="cp">#define PKG_USING_ONENET_LATEST_VERSION</span>
 </code></pre></div>
 
+<h3 id="onenetapi">OneNet软件包API<a class="headerlink" href="#onenetapi" title="Permanent link">#</a></h3>
+<p><a href="https://github.com/RT-Thread-packages/onenet/blob/master/docs/api.md">点击查看</a></p>
+<h3 id="_2">函数说明<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<ul>
+<li>urc_recv_func</li>
+<li>rt_kprintf怎么打印小数？</li>
+</ul>
 <h2 id="esp8266">esp8266<a class="headerlink" href="#esp8266" title="Permanent link">#</a></h2>
-<h3 id="_2">遇见的问题<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<h3 id="_3">遇见的问题<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>1.没有<code>AT+CIPDNS_CUR?</code>命令<br />
 <img alt="error-rtthread-cipdns_cut" src="../%E5%9B%BE%E7%89%87/error-rtthread-cipdns_cut.png" />
 解决：  更新esp8266固件  </p>
@@ -158,8 +169,51 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>网上说使用ESP8266-IDF-AT_V2.1.0.0版本</p>
 <p>官网说使用该版本下的factory_xxx.bin，烧录在0地址下</p>
 <p>本人烧录未成功</p>
+<p>​</p>
 </li>
 </ul>
+<h1 id="_4">文件系统<a class="headerlink" href="#_4" title="Permanent link">#</a></h1>
+<h2 id="1">1. 存储设备初始化<a class="headerlink" href="#1" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p>开启spi驱动</p>
+</li>
+<li>
+<p>检查设备</p>
+</li>
+<li>
+<p>初始化，创建存储设备</p>
+<ul>
+<li>
+<p>使用W25Q128</p>
+</li>
+<li>
+<p>W25Q128说明</p>
+</li>
+</ul>
+<blockquote>
+<p>W25Q128BV由65536可编程的页组成的，每页有256个字节。一次最多可以写256个字节。可以一次擦除16页（4KB sector erase），128页（32KB block erase）,256页(64KB block erase),或者擦除一整片。W25Q128BV 有4096个可擦除的扇区，256可擦除的块。4KB的扇区对于数据和参数存储有更高的灵活性。</p>
+</blockquote>
+</li>
+<li>
+<p>的</p>
+</li>
+</ul>
+<h2 id="2">2. 文件系统的使用<a class="headerlink" href="#2" title="Permanent link">#</a></h2>
+<h3 id="21">2.1 文件系统初始化<a class="headerlink" href="#21" title="Permanent link">#</a></h3>
+<ul>
+<li>DFS框架初始化</li>
+<li>dfs_init()函数</li>
+<li>中间层文件系统初始化（初始化具体的文件系统）</li>
+<li>使用elm FatFS文件系统：elm_init()</li>
+<li>存储设备初始化（参考上面）</li>
+<li>的</li>
+</ul>
+<h3 id="_5">创建文件系统<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<ul>
+<li>文件系统创建完成后需要重启设备。</li>
+</ul>
+<h3 id="_6">使用文件系统<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 
   <br>
     
